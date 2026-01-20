@@ -3,12 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="نظارات Steampunk الأصلية بعدسات قابلة للتعديل - حماية UV400 - شحن مجاني">
     <title>نظارات Steampunk الأصلية | عدسات قابلة للتعديل</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- DNS Prefetch & Preconnect for Speed -->
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Critical: Load fonts with display swap -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js deferred -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- TikTok Pixel Code Start -->
+    <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+    var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+    ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+      ttq.load('D5K2VLBC77U2941FTBK0');
+      ttq.page();
+    }(window, document, 'ttq');
+    </script>
+    <!-- TikTok Pixel Code End -->
     
     <!-- Preload Hero Images for Priority Loading -->
     <link rel="preload" as="image" href="images/Steampunk_Round_Goggles_Black.webp">
@@ -184,7 +207,10 @@
             window.submitOrderForm(this.formData);
         }
     }
-}" x-init="window.addEventListener('scroll', () => { showStickyBar = window.scrollY > 500; })">
+}" x-init="
+    window.addEventListener('scroll', () => { showStickyBar = window.scrollY > 500; });
+    setInterval(() => { currentImage = (currentImage + 1) % images.length; }, 3000);
+">
 
     <!-- Sticky Bottom Bar -->
     <div x-show="showStickyBar" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="translate-y-full" x-transition:enter-end="translate-y-0"
@@ -235,8 +261,10 @@
                         </span>
                         
                         <!-- Title -->
-                        <h1 class="text-2xl md:text-3xl font-extrabold text-brand-dark leading-tight mb-3">
-                            نظارة Steampunk الأصلية بعدسات قابلة للتعديل
+                        <h1 class="text-2xl md:text-3xl font-extrabold leading-tight mb-3">
+                            <span class="bg-gradient-to-l from-brand-orange via-brand-gold to-brand-yellow bg-clip-text text-transparent animate-pulse">نظارة Steampunk الأصلية</span>
+                            <br>
+                            <span class="text-brand-dark">بعدسات </span><span class="bg-gradient-to-r from-brand-red via-brand-orange to-brand-gold bg-clip-text text-transparent">قابلة للتعديل</span>
                         </h1>
                         
                         <!-- Subtitle -->
@@ -350,6 +378,31 @@
                             <span>↩️ استرجاع سهل</span>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRODUCT VIDEO ========== -->
+    <section class="py-8 px-4 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="text-xl md:text-2xl font-bold text-center mb-2 flex items-center justify-center gap-2">
+                <span class="text-brand-orange">▶</span>
+                شاهد النظارة أثناء الاستخدام
+            </h2>
+            <p class="text-gray-500 text-center mb-6">تصميم فريد وعدسات قابلة للتعديل</p>
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                <video 
+                    class="w-full h-auto"
+                    autoplay 
+                    muted 
+                    loop 
+                    playsinline
+                    poster="images/Steampunk_Round_Goggles_Black.webp">
+                    <source src="images/c8bat7-h264-hd.mp4" type="video/mp4">
+                </video>
+                <div class="absolute bottom-4 right-4 bg-black/50 text-white text-xs px-3 py-1 rounded-full">
+                    🔇 صوت مغلق
                 </div>
             </div>
         </div>
@@ -536,7 +589,7 @@
             </h2>
             <p class="text-gray-500 text-center mb-8">نظارة + علبة فاخرة + قماشة تنظيف</p>
             <div class="img-container rounded-2xl overflow-hidden shadow-2xl img-premium" x-data="{ loaded: false }">
-                <img src="images/luxury-round-sunglasses-matte-black-with-premium-hard-case.jpg" alt="محتويات العلبة" 
+                <img src="images/luxury-round-sunglasses-matte-black-with-premium-hard-case.webp" alt="محتويات العلبة" 
                      class="w-full h-auto img-fade"
                      :class="loaded ? 'loaded' : ''"
                      @load="loaded = true; $el.parentElement.classList.add('loaded')" loading="lazy">
@@ -548,7 +601,7 @@
     <section class="py-12 px-4 bg-gray-50">
         <div class="max-w-4xl mx-auto">
             <div class="img-container rounded-2xl overflow-hidden shadow-2xl img-premium" x-data="{ loaded: false }">
-                <img src="images/elegant-fashion-classics-black-round-sunglasses-ad-arabic.png" alt="إعلان أنيق" 
+                <img src="images/elegant-fashion-classics-black-round-sunglasses-ad-arabic.webp" alt="إعلان أنيق" 
                      class="w-full h-auto img-fade"
                      :class="loaded ? 'loaded' : ''"
                      @load="loaded = true; $el.parentElement.classList.add('loaded')" loading="lazy">
