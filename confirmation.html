@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تأكيد الطلب | نظارات Steampunk</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- TikTok Pixel Code Start -->
+    <script>
+        !function (w, d, t) {
+            w.TiktokAnalyticsObject = t; var ttq = w[t] = w[t] || []; ttq.methods = ["page", "track", "identify", "instances", "debug", "on", "off", "once", "ready", "alias", "group", "enableCookie", "disableCookie", "holdConsent", "revokeConsent", "grantConsent"], ttq.setAndDefer = function (t, e) { t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } }; for (var i = 0; i < ttq.methods.length; i++)ttq.setAndDefer(ttq, ttq.methods[i]); ttq.instance = function (t) {
+                for (
+                    var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++)ttq.setAndDefer(e, ttq.methods[n]); return e
+            }, ttq.load = function (e, n) {
+                var r = "https://analytics.tiktok.com/i18n/pixel/events.js", o = n && n.partner; ttq._i = ttq._i || {}, ttq._i[e] = [], ttq._i[e]._u = r, ttq._t = ttq._t || {}, ttq._t[e] = +new Date, ttq._o = ttq._o || {}, ttq._o[e] = n || {}; n = document.createElement("script")
+                    ; n.type = "text/javascript", n.async = !0, n.src = r + "?sdkid=" + e + "&lib=" + t; e = document.getElementsByTagName("script")[0]; e.parentNode.insertBefore(n, e)
+            };
+            ttq.load('D5K2VLBC77U2941FTBK0');
+            ttq.page();
+            ttq.track('CompletePayment');
+        }(window, document, 'ttq');
+    </script>
+    <!-- TikTok Pixel Code End -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -27,27 +47,69 @@
         }
     </script>
     <style>
-        * { font-family: 'Cairo', sans-serif; }
-        
+        * {
+            font-family: 'Cairo', sans-serif;
+        }
+
         @keyframes success-pop {
-            0% { transform: scale(0); opacity: 0; }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); opacity: 1; }
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
-        .success-icon { animation: success-pop 0.6s ease-out forwards; }
-        
+
+        .success-icon {
+            animation: success-pop 0.6s ease-out forwards;
+        }
+
         @keyframes fade-up {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .fade-up { animation: fade-up 0.5s ease-out forwards; }
-        .fade-up-delay-1 { animation-delay: 0.2s; opacity: 0; }
-        .fade-up-delay-2 { animation-delay: 0.4s; opacity: 0; }
-        .fade-up-delay-3 { animation-delay: 0.6s; opacity: 0; }
-        .fade-up-delay-4 { animation-delay: 0.8s; opacity: 0; }
+
+        .fade-up {
+            animation: fade-up 0.5s ease-out forwards;
+        }
+
+        .fade-up-delay-1 {
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+
+        .fade-up-delay-2 {
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+
+        .fade-up-delay-3 {
+            animation-delay: 0.6s;
+            opacity: 0;
+        }
+
+        .fade-up-delay-4 {
+            animation-delay: 0.8s;
+            opacity: 0;
+        }
     </style>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
+
 <body class="bg-gray-50 text-brand-dark min-h-screen" x-data="{
     order: {},
     init() {
@@ -59,7 +121,7 @@
         }
     }
 }">
-    
+
     <!-- Header -->
     <header class="bg-white shadow-sm py-4 px-4 sticky top-0 z-50">
         <div class="max-w-lg mx-auto text-center">
@@ -68,16 +130,17 @@
     </header>
 
     <main class="px-4 py-6 max-w-lg mx-auto">
-        
+
         <!-- Success Icon -->
         <div class="text-center mb-6">
             <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 success-icon">
                 <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
                 </svg>
             </div>
             <h2 class="text-2xl font-bold text-brand-dark mb-1 fade-up">تم الطلب بنجاح!</h2>
-            <p class="text-gray-500 fade-up fade-up-delay-1">رقم الطلب: <span class="font-bold text-brand-dark" x-text="'#' + order.orderNumber">#0000</span></p>
+            <p class="text-gray-500 fade-up fade-up-delay-1">رقم الطلب: <span class="font-bold text-brand-dark"
+                    x-text="'#' + order.orderNumber">#0000</span></p>
         </div>
 
         <!-- Steps Section -->
@@ -86,7 +149,7 @@
                 <span class="text-xl">⚠️</span>
                 <span class="font-bold text-sm">هام: الخطوات القادمة (الدفع عند الاستلام)</span>
             </div>
-            
+
             <div class="space-y-4">
                 <!-- Step 1 -->
                 <div class="flex items-center gap-4">
@@ -98,7 +161,7 @@
                         <p class="text-xs text-gray-500">(ضرورية لإتمام الشحن)</p>
                     </div>
                 </div>
-                
+
                 <!-- Step 2 -->
                 <div class="flex items-center gap-4">
                     <div class="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -108,7 +171,7 @@
                         <p class="font-semibold text-sm">2. يتم الشحن بعد التأكيد</p>
                     </div>
                 </div>
-                
+
                 <!-- Step 3 -->
                 <div class="flex items-center gap-4">
                     <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -125,14 +188,16 @@
         <div class="bg-white rounded-2xl shadow-md p-5 mb-4 fade-up fade-up-delay-2">
             <div class="flex items-center gap-4">
                 <div class="w-20 h-20 bg-gray-100 rounded-xl overflow-hidden flex-shrink-0">
-                    <img src="images/Steampunk_Round_Goggles_Black.webp" alt="نظارة Steampunk" class="w-full h-full object-cover">
+                    <img src="images/Steampunk_Round_Goggles_Black.webp" alt="نظارة Steampunk"
+                        class="w-full h-full object-cover">
                 </div>
                 <div class="flex-1">
                     <div class="flex items-center gap-2 mb-1">
                         <span class="text-xs bg-gray-200 px-2 py-0.5 rounded" x-text="'x' + order.quantity">x1</span>
                     </div>
                     <h3 class="font-bold text-sm mb-1">نظارة Steampunk الأصلية - <span x-text="order.plan"></span></h3>
-                    <p class="text-sm text-gray-600">السعر: <span class="font-bold text-brand-orange" x-text="order.total">1,600 ج.م</span></p>
+                    <p class="text-sm text-gray-600">السعر: <span class="font-bold text-brand-orange"
+                            x-text="order.total">1,199 ج.م</span></p>
                     <p class="text-sm text-gray-600">الشحن: <span class="font-bold text-green-600">مجاني</span></p>
                 </div>
             </div>
@@ -141,18 +206,19 @@
         <!-- Total Amount -->
         <div class="text-center py-4 mb-4 fade-up fade-up-delay-2">
             <p class="text-gray-600 mb-1">المبلغ المستحق عند الاستلام:</p>
-            <p class="text-3xl font-black text-brand-orange" x-text="order.total">1,600 ج.م</p>
+            <p class="text-3xl font-black text-brand-orange" x-text="order.total">1,199 ج.م</p>
         </div>
 
         <!-- Shipping Data -->
         <div class="bg-white rounded-2xl shadow-md p-5 mb-6 fade-up fade-up-delay-3">
             <div class="flex items-center justify-between mb-4">
                 <h3 class="font-bold">بيانات الشحن</h3>
-                <button class="text-xs bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-lg font-semibold transition-colors">
+                <button
+                    class="text-xs bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-lg font-semibold transition-colors">
                     تعديل البيانات
                 </button>
             </div>
-            
+
             <div class="space-y-3 text-sm">
                 <div class="flex justify-between">
                     <span class="text-gray-500">الاسم:</span>
@@ -176,10 +242,11 @@
         <!-- WhatsApp Contact -->
         <div class="text-center fade-up fade-up-delay-4">
             <p class="text-gray-600 mb-3">هل لديك استفسار؟</p>
-            <a href="https://wa.me/201205234797" target="_blank" 
-               class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-all shadow-lg">
+            <a href="https://wa.me/201205234797" target="_blank"
+                class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-all shadow-lg">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                 </svg>
                 تواصل عبر واتساب
             </a>
@@ -195,4 +262,5 @@
     </footer>
 
 </body>
+
 </html>

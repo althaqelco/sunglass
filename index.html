@@ -217,8 +217,8 @@
          class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t-2 border-gray-100 shadow-2xl px-4 py-3">
         <div class="max-w-lg mx-auto flex items-center justify-between gap-3">
             <div class="flex flex-col">
-                <span class="text-xs text-gray-400 line-through">2,200 ج.م</span>
-                <span class="text-xl font-bold text-brand-orange">1,600 ج.م</span>
+                <span class="text-xs text-gray-400 line-through">1,800 ج.م</span>
+                <span class="text-xl font-bold text-brand-orange">1,199 ج.م</span>
             </div>
             <a href="#order-form" class="flex-1 bg-brand-orange hover:bg-orange-600 text-white text-center font-bold py-3 px-6 rounded-full transition-all shadow-lg">
                 اطلب الآن
@@ -282,11 +282,11 @@
                         <!-- Price -->
                         <div class="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-xl p-4 mb-4">
                             <div class="flex items-center flex-wrap gap-3 mb-3">
-                                <span class="text-4xl font-black text-brand-orange">1,600</span>
+                                <span class="text-4xl font-black text-brand-orange">1,199</span>
                                 <span class="text-xl font-bold text-brand-orange">ج.م</span>
-                                <span class="text-lg text-gray-400 line-through">2,200 ج.م</span>
+                                <span class="text-lg text-gray-400 line-through">1,800 ج.م</span>
                                 <span class="bg-brand-orange text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
-                                    <span class="bounce-icon">🏷️</span> وفر 27%
+                                    <span class="bounce-icon">🏷️</span> وفر 33%
                                 </span>
                             </div>
                             <p class="text-green-600 text-sm font-semibold">✓ الشحن مجاني لجميع المحافظات</p>
@@ -628,7 +628,7 @@
     <!-- ========== ORDER FORM ========== -->
     <section id="order-form" class="py-6 px-0 md:px-4 gradient-purple" x-data="{ 
         selectedPlan: '1',
-        prices: { '1': 1600, '2': 2800, '3': 4000 },
+        prices: { '1': 1199, '2': 1999, '3': 2799 },
         getTotal() { return this.prices[this.selectedPlan]; }
     }">
         <div class="w-full md:max-w-lg md:mx-auto">
@@ -662,7 +662,7 @@
                                         <span>🛍️</span> قطعة واحدة
                                     </span>
                                 </div>
-                                <span class="font-bold text-brand-orange text-lg md:text-xl">1,600 ج.م</span>
+                                <span class="font-bold text-brand-orange text-lg md:text-xl">1,199 ج.م</span>
                             </label>
                             
                             <!-- Option 2 - Best Seller -->
@@ -677,10 +677,10 @@
                                     </span>
                                     <span class="font-semibold text-base md:text-lg flex items-center gap-2 flex-wrap">
                                         <span>🛍️</span> قطعتين
-                                        <span class="bg-green-100 text-green-700 text-sm px-2 py-0.5 rounded">وفر 12%</span>
+                                        <span class="bg-green-100 text-green-700 text-sm px-2 py-0.5 rounded">وفر 17%</span>
                                     </span>
                                 </div>
-                                <span class="font-bold text-brand-orange text-lg md:text-xl">2,800 ج.م</span>
+                                <span class="font-bold text-brand-orange text-lg md:text-xl">1,999 ج.م</span>
                             </label>
                             
                             <!-- Option 3 -->
@@ -694,10 +694,10 @@
                                     </span>
                                     <span class="font-semibold text-base md:text-lg flex items-center gap-2">
                                         <span>🛍️</span> 3 قطع
-                                        <span class="bg-green-100 text-green-700 text-sm px-2 py-0.5 rounded">وفر 25%</span>
+                                        <span class="bg-green-100 text-green-700 text-sm px-2 py-0.5 rounded">وفر 22%</span>
                                     </span>
                                 </div>
-                                <span class="font-bold text-brand-orange text-lg md:text-xl">4,000 ج.م</span>
+                                <span class="font-bold text-brand-orange text-lg md:text-xl">2,799 ج.م</span>
                             </label>
                         </div>
                     </div>
@@ -781,7 +781,7 @@
                     <!-- Total -->
                     <div class="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-xl p-4 md:p-5 mb-5 text-center">
                         <p class="text-sm text-gray-600 mb-1">الإجمالي المطلوب</p>
-                        <p class="text-3xl font-black text-brand-orange" x-text="getTotal().toLocaleString() + ' جنيه'">1,600 جنيه</p>
+                        <p class="text-3xl font-black text-brand-orange" x-text="getTotal().toLocaleString() + ' جنيه'">1,199 جنيه</p>
                         <p class="text-green-600 text-sm font-semibold mt-1">✅ شامل الشحن المجاني</p>
                     </div>
                     
@@ -834,7 +834,7 @@
             const orderNumber = Math.floor(Math.random() * 9000) + 1000;
             const planNames = { '1': 'قطعة واحدة', '2': 'قطعتين', '3': '3 قطع' };
             const planQty = { '1': 1, '2': 2, '3': 3 };
-            const planPrices = { '1': '1,600 جنيه', '2': '2,800 جنيه', '3': '4,000 جنيه' };
+            const planPrices = { '1': '1,199 جنيه', '2': '1,999 جنيه', '3': '2,799 جنيه' };
             const checkedPlan = document.querySelector('[name=plan]:checked');
             const planValue = checkedPlan ? checkedPlan.value : '1';
             

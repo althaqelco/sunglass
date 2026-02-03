@@ -1,0 +1,18 @@
+# Cache images for 1 year
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Video files
+/images/*.mp4
+  Content-Type: video/mp4
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML - always revalidate
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Security headers
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
