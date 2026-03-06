@@ -32,6 +32,24 @@
     }(window, document, 'ttq');
     </script>
     <!-- TikTok Pixel Code End -->
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '3278502738993238');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=3278502738993238&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
     
     <!-- Preload Hero Images for Priority Loading -->
     <link rel="preload" as="image" href="images/Steampunk_Round_Goggles_Black.webp">
@@ -210,6 +228,38 @@
 }" x-init="
     window.addEventListener('scroll', () => { showStickyBar = window.scrollY > 500; });
     setInterval(() => { currentImage = (currentImage + 1) % images.length; }, 3000);
+
+    // Meta Pixel: ViewContent event
+    if (typeof fbq !== 'undefined') {
+        fbq('track', 'ViewContent', {
+            content_name: 'نظارة Steampunk الأصلية',
+            content_ids: ['steampunk-sunglasses'],
+            content_type: 'product',
+            value: 1199,
+            currency: 'EGP'
+        });
+    }
+
+    // Meta Pixel: InitiateCheckout when form enters viewport
+    const orderFormEl = document.getElementById('order-form');
+    if (orderFormEl) {
+        let checkoutFired = false;
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !checkoutFired) {
+                checkoutFired = true;
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'InitiateCheckout', {
+                        content_name: 'نظارة Steampunk الأصلية',
+                        content_ids: ['steampunk-sunglasses'],
+                        content_type: 'product',
+                        value: 1199,
+                        currency: 'EGP'
+                    });
+                }
+            }
+        }, { threshold: 0.3 });
+        observer.observe(orderFormEl);
+    }
 ">
 
     <!-- Sticky Bottom Bar -->
@@ -835,8 +885,12 @@
             const planNames = { '1': 'قطعة واحدة', '2': 'قطعتين', '3': '3 قطع' };
             const planQty = { '1': 1, '2': 2, '3': 3 };
             const planPrices = { '1': '1,199 جنيه', '2': '1,999 جنيه', '3': '2,799 جنيه' };
+            const planValues = { '1': 1199, '2': 1999, '3': 2799 };
             const checkedPlan = document.querySelector('[name=plan]:checked');
             const planValue = checkedPlan ? checkedPlan.value : '1';
+            
+            // Generate unique event_id for Meta deduplication
+            const eventId = 'purchase_' + orderNumber + '_' + Date.now();
             
             const orderData = {
                 orderNumber: orderNumber,
@@ -847,13 +901,27 @@
                 address: formData.address,
                 plan: planNames[planValue],
                 quantity: planQty[planValue],
-                total: planPrices[planValue]
+                total: planPrices[planValue],
+                eventId: eventId,
+                numericTotal: planValues[planValue]
             };
             
             // Save to localStorage for confirmation page
             localStorage.setItem('orderData', JSON.stringify(orderData));
             
-            // Send to Google Sheets via API
+            // Fire Meta Pixel Purchase event (client-side)
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Purchase', {
+                    content_name: 'نظارة Steampunk الأصلية',
+                    content_ids: ['steampunk-sunglasses'],
+                    content_type: 'product',
+                    value: planValues[planValue],
+                    currency: 'EGP',
+                    num_items: planQty[planValue]
+                }, { eventID: eventId });
+            }
+            
+            // Send to Google Sheets + CAPI via API
             fetch('/api/orders', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

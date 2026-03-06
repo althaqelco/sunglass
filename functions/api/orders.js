@@ -149,6 +149,83 @@ export async function onRequestPost(context) {
             }
         }
 
+        // إرسال حدث Meta Conversions API (CAPI)
+        if (env.META_ACCESS_TOKEN && env.META_PIXEL_ID) {
+            try {
+                // SHA-256 hashing function for PII
+                async function sha256Hash(value) {
+                    if (!value) return null;
+                    const normalized = value.toString().trim().toLowerCase();
+                    const encoded = new TextEncoder().encode(normalized);
+                    const hashBuffer = await crypto.subtle.digest('SHA-256', encoded);
+                    return Array.from(new Uint8Array(hashBuffer))
+                        .map(b => b.toString(16).padStart(2, '0'))
+                        .join('');
+                }
+
+                // Normalize Egyptian phone to E.164 format
+                function normalizePhone(ph) {
+                    if (!ph) return null;
+                    let cleaned = ph.replace(/[^0-9]/g, '');
+                    if (cleaned.startsWith('0')) cleaned = '20' + cleaned.substring(1);
+                    if (!cleaned.startsWith('20')) cleaned = '20' + cleaned;
+                    return cleaned;
+                }
+
+                const eventId = body.eventId || ('purchase_' + orderNumber + '_' + Date.now());
+                const orderValue = body.numericTotal || parseFloat(total.replace(/[^0-9.]/g, '')) || 1199;
+
+                // Hash user data
+                const [hashedPhone, hashedName, hashedCity] = await Promise.all([
+                    sha256Hash(normalizePhone(phone)),
+                    sha256Hash(name),
+                    sha256Hash(governorate)
+                ]);
+
+                const capiPayload = {
+                    data: [{
+                        event_name: 'Purchase',
+                        event_time: Math.floor(Date.now() / 1000),
+                        event_id: eventId,
+                        event_source_url: request.headers.get('Referer') || 'https://sunglass.pages.dev',
+                        action_source: 'website',
+                        user_data: {
+                            ph: hashedPhone ? [hashedPhone] : undefined,
+                            fn: hashedName ? [hashedName] : undefined,
+                            ct: hashedCity ? [hashedCity] : undefined,
+                            country: [await sha256Hash('eg')],
+                            client_user_agent: request.headers.get('User-Agent') || '',
+                            client_ip_address: request.headers.get('CF-Connecting-IP') || request.headers.get('X-Forwarded-For') || ''
+                        },
+                        custom_data: {
+                            currency: 'EGP',
+                            value: orderValue,
+                            content_name: 'نظارة Steampunk الأصلية',
+                            content_ids: ['steampunk-sunglasses'],
+                            content_type: 'product',
+                            num_items: quantity,
+                            contents: [{
+                                id: 'steampunk-sunglasses',
+                                quantity: quantity,
+                                item_price: orderValue / quantity
+                            }]
+                        }
+                    }]
+                };
+
+                await fetch(
+                    `https://graph.facebook.com/v21.0/${env.META_PIXEL_ID}/events?access_token=${env.META_ACCESS_TOKEN}`,
+                    {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(capiPayload)
+                    }
+                );
+            } catch (e) {
+                console.error('Meta CAPI error:', e);
+            }
+        }
+
         return new Response(JSON.stringify({ success: true }), {
             headers: {
                 'Content-Type': 'application/json',
